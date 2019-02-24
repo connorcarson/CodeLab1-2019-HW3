@@ -41,6 +41,8 @@ public class CubeBlueScript : MonoBehaviour
         if (other.gameObject == player) //and that collider belongs to the correct player
         {
             Destroy(gameObject); //destroy this cube and
+            GameManager.instance.Health += 5;
+            GameManager.instance.Score++;
             //Destroy(cubeTimer); //destroy this timer
         }
     }

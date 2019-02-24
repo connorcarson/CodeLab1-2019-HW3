@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
 	public float initCubeSpawnDelay = 3;
 	public float cubeSpawnRate = 3;
+	
 
 	int health = 100;
 

@@ -40,7 +40,7 @@ public class GameOverManager : MonoBehaviour
 		restartTimer += Time.deltaTime; //count up in seconds
 		if (restartTimer >= restartDelay) //if restart timer is equal to our restart delay
 		{
-			SceneManager.LoadScene("LoveConnection"); //restart the game
+			SceneManager.LoadScene(1); //load next level
 		}
 	}
 }

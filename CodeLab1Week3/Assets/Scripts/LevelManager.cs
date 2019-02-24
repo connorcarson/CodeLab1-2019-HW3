@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    //public Canvas canvas;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
 
+    private Animator anim;
+
     public float timeLeft = 30;
     private int wholeTime;
+    public float restartTimer;
+    public float restartDelay = 8;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +30,16 @@ public class LevelManager : MonoBehaviour
         LevelTimer();
         ScoreDisplay();
         HealthDisplay();
+        
+        if (timeLeft <= 0)
+        {
+            LevelLoader();
+        }
+
+        if (GameManager.instance.Health < 0)
+        {
+            GameOver();
+        }
     }
     
     void LevelTimer()
@@ -41,5 +57,26 @@ public class LevelManager : MonoBehaviour
     void HealthDisplay()
     {
         healthText.text = "Health: " + GameManager.instance.Health;
+    }
+
+    void LevelLoader()
+    {
+        anim.SetTrigger("Level1Over");
+        restartTimer += Time.deltaTime; //count up in seconds
+        if (restartTimer >= restartDelay) //if restart timer is equal to our restart delay
+        {
+            SceneManager.LoadScene(1); //load next level
+        }
+    }
+    
+    public void GameOver()
+    {
+        anim.SetTrigger("GameOver"); //start Game Over animation
+        
+        restartTimer += Time.deltaTime; //count up in seconds
+        if (restartTimer >= restartDelay) //if restart timer is equal to our restart delay
+        {
+            SceneManager.LoadScene(0); //load next level
+        }
     }
 }

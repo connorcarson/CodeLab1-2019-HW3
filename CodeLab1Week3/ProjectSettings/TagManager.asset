@@ -12,6 +12,8 @@ TagManager:
   - CubeTimer
   - Cube1
   - Cube2
+  - Timer
+  - LevelManager
   layers:
   - Default
   - TransparentFX

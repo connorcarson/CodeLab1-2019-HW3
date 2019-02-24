@@ -42,7 +42,7 @@ public class CubeRedScript : MonoBehaviour
         {
             Destroy(gameObject); //destroy this cube and
             GameManager.instance.Health += 5;
-            GameManager.instance.Score += 1;
+            GameManager.instance.Score++;
             //Destroy(cubeTimer); //destroy this timer
         }
     }
