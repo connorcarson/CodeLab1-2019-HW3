@@ -6,9 +6,6 @@ public class PlayerController : MonoBehaviour
 {
 	private Rigidbody rb;
 
-	//public GameObject cube;
-	//public GameObject cubeTimer;
-
 	public KeyCode upKey;
 	public KeyCode downKey;
 	public KeyCode rightKey;
@@ -51,13 +48,4 @@ public class PlayerController : MonoBehaviour
 		
 		rb.AddForce(newForce); //apply total force
 	}
-
-	/*private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject == cube)
-		{
-			Destroy(cube);
-			Destroy(cubeTimer);
-		}
-	}*/
 }

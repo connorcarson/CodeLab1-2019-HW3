@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
 	public TextMeshProUGUI timerText;
 
 	public float timeLeft = 30;
+	public float initCubeSpawnDelay = 3;
+	public float cubeSpawnRate = 3;
 	private int wholeTime;
 
 	int health = 100;
@@ -47,26 +49,24 @@ public class LevelManager : MonoBehaviour
 			Destroy(gameObject); //otherwise, if there is an instance already in this scene, destroy this LevelManager
 		}
 		
-		Spawn(); //spawn first prize at the start of our game
-		InvokeRepeating("CubeSpawn", 3, 5);
+		HeartSpawn(); //spawn first prize at the start of our game
+		InvokeRepeating("CubeSpawn", initCubeSpawnDelay, cubeSpawnRate); //spawn CubeRed and CubeBlue according to our init delay in seconds, and then repeat according to our cubeSpawnRate
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		timeLeft -= Time.deltaTime; //Countdown one second, every second
-		wholeTime = (int) timeLeft; //Convert float to int, round time in seconds up to whole number
-		timerText.text = "" + wholeTime; //display Time
+		LevelTimer();
 		CheckForPrize();
 	}
 
-	void Spawn() //function for spawning our prize
+	void HeartSpawn() //function for spawning our heart prize
 	{
 		GameObject newPrize = Instantiate(Resources.Load<GameObject>("Prefabs/Prize")); //loads prefab into game
 		newPrize.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4)); //at new, random location
 	}
 
-	void CubeSpawn()
+	void CubeSpawn() //function for spawning our cube prizes
 	{
 		GameObject newCube1 = Instantiate(Resources.Load<GameObject>("Prefabs/CubeBlue"));
 		newCube1.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4));
@@ -74,12 +74,19 @@ public class LevelManager : MonoBehaviour
 		newCube2.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4));
 	}
 
-	void CheckForPrize() //check if prize has been destroyed
+	void CheckForPrize() //check if heart prize has been destroyed
 	{
 		GameObject prizesInScene = GameObject.FindWithTag("Prize"); //find all objects in scene tagged "Prize"
 		if (prizesInScene == null) //if there are no objects tagged "Prize" in our scene
 		{
-			Spawn(); //then spawn a new prize
+			HeartSpawn(); //then spawn a new prize
 		}
+	}
+
+	void LevelTimer()
+	{
+		timeLeft -= Time.deltaTime; //Countdown one second, every second
+		wholeTime = (int) timeLeft; //Convert float to int, round time in seconds up to whole number
+		timerText.text = "" + wholeTime; //display Time
 	}
 }

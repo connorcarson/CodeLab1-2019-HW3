@@ -7,18 +7,19 @@ using UnityEngine.UI;
 public class CubeRedScript : MonoBehaviour
 {
     public GameObject player;
+    
+    public float timeLeft = 10f;
+    
+#region Unused Cube Timer UI Variables
     //public GameObject cubeTimer;
-        
     //public TextMeshProUGUI cubeTimerText;
-
     //public float xOffset = 81f;
     //public float yOffset = 10f;
-    public float timeLeft = 10f;
     //private int wholeTime;
-
     //public Camera mainCam;
     //public RectTransform cubeTimerRect;
     //public Canvas canvas;
+#endregion
    
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,7 @@ public class CubeRedScript : MonoBehaviour
         }
     }
 
+#region Unused ConvertUIPos Method
     /*private void ConvertUIPos()
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>(); //initialize RectTransform variable
@@ -54,6 +56,7 @@ public class CubeRedScript : MonoBehaviour
             (((viewportPos.y*canvasRect.sizeDelta.y)-(canvasRect.sizeDelta.y*0.5f)) + yOffset)); //not sure why the offset is necessary, but it is
         cubeTimerRect.anchoredPosition = cubeScreenPos; //position cube timer on canvas according to world pos of cube
     }*/
+#endregion
 
     private void CubeCountdown() //countdown timer for cube
     {

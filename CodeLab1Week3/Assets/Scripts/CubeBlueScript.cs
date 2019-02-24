@@ -10,7 +10,7 @@ public class CubeBlueScript : MonoBehaviour
 
     public float timeLeft = 10f;
     
-#region Cube Time UI Variables
+#region Unused Cube Timer UI Variables
     //public GameObject cubeTimer;
     //public TextMeshProUGUI cubeTimerText;
     //public float xOffset = 81f;
@@ -45,6 +45,7 @@ public class CubeBlueScript : MonoBehaviour
         }
     }
 
+#region Unused ConvertUIPos Method
     /*private void ConvertUIPos()
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>(); //initialize RectTransform variable
@@ -55,7 +56,8 @@ public class CubeBlueScript : MonoBehaviour
             (((viewportPos.y*canvasRect.sizeDelta.y)-(canvasRect.sizeDelta.y*0.5f)) + yOffset)); //not sure why the offset is necessary, but it is
         cubeTimerRect.anchoredPosition = cubeScreenPos; //position cube timer on canvas according to world pos of cube
     }*/
-
+#endregion
+    
     private void CubeCountdown() //countdown timer for cube
     {
         timeLeft -= Time.deltaTime; //countdown in seconds starting from timeLeft
