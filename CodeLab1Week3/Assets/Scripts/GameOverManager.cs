@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
 
-	private GameObject GameManager;
+	private GameObject levelManager;
 	
-	private GameManager _gameManager;
+	private LevelManager _levelManager;
 
 	private Animator anim;
 
@@ -21,13 +21,13 @@ public class GameOverManager : MonoBehaviour
 	void Start ()
 	{
 		anim = GetComponent<Animator>();
-		GameManager = GameObject.FindWithTag("GameController"); //Get reference to GameManager object
-		_gameManager = GameManager.GetComponent<GameManager>(); //Get reference to GameManager's script
+		levelManager = GameObject.FindWithTag("LevelManager"); //Get reference to GameManager object
+		_levelManager = levelManager.GetComponent<LevelManager>(); //Get reference to GameManager's script
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (_gameManager.timeLeft <= 0) //if the timer runs out
+		if (_levelManager.timeLeft <= 0) //if the timer runs out
 		{
 			GameOver(); //game over
 		}

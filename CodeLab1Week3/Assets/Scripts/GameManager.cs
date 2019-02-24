@@ -7,13 +7,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	public TextMeshProUGUI timerText;
 	public TextMeshProUGUI scoreText;
 
-	public float timeLeft = 30;
 	public float initCubeSpawnDelay = 3;
 	public float cubeSpawnRate = 3;
-	private int wholeTime;
 
 	int health = 100;
 
@@ -71,7 +68,6 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		LevelTimer();
 		ScoreDisplay();
 		CheckForPrize();
 	}
@@ -97,13 +93,6 @@ public class GameManager : MonoBehaviour
 		{
 			HeartSpawn(); //then spawn a new prize
 		}
-	}
-
-	void LevelTimer()
-	{
-		timeLeft -= Time.deltaTime; //Countdown one second, every second
-		wholeTime = (int) timeLeft; //Convert float to int, round time in seconds up to whole number
-		timerText.text = "" + wholeTime; //display Time
 	}
 
 	void ScoreDisplay()
