@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    //public Canvas canvas;
+    public Canvas canvas;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
@@ -17,11 +17,29 @@ public class LevelManager : MonoBehaviour
     private int wholeTime;
     public float restartTimer;
     public float restartDelay = 8;
+
+    public float TimeLeft
+    {
+        get { return timeLeft; }
+        set
+        {
+            timeLeft = value;
+            if (timeLeft > 30)
+            {
+                timeLeft = 30;
+            }
+
+            if (timeLeft < 0)
+            {
+                timeLeft = 0;
+            }
+        }
+    }
     
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = canvas.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,8 +62,8 @@ public class LevelManager : MonoBehaviour
     
     void LevelTimer()
     {
-        timeLeft -= Time.deltaTime; //Countdown one second, every second
-        wholeTime = (int) timeLeft; //Convert float to int, round time in seconds up to whole number
+        TimeLeft -= Time.deltaTime; //Countdown one second, every second
+        wholeTime = (int) TimeLeft; //Convert float to int, round time in seconds up to whole number
         timerText.text = "" + wholeTime; //display Time
     }
     

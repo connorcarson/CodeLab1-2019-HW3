@@ -25,7 +25,7 @@ private void OnTriggerEnter(Collider other)
 		{
 			//Debug.Log("Two players collided with me!");
 			Destroy(gameObject); //then destroy this prize
-			GameManager.instance.Score++;
+			GameManager.instance.Score += 5;
 		}
 		
 		else if (other.CompareTag("Player")) //if just one player is touching this prize

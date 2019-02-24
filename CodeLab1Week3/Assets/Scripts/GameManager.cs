@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 	public float initCubeSpawnDelay = 3;
-	public float cubeSpawnRate = 3;
+	public float cubeSpawnRate = 8;
 	
 
 	int health = 100;

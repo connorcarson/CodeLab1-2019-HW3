@@ -8,7 +8,7 @@ public class CubeBlueScript : MonoBehaviour
 {
     public GameObject player;
 
-    public float timeLeft = 10f;
+    private float timeLeft = 5f;
     
 #region Unused Cube Timer UI Variables
     //public GameObject cubeTimer;
