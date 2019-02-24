@@ -70,7 +70,7 @@ public class CubeRedScript : MonoBehaviour
         if (timeLeft <= 0) //if timeLeft runs out
         {
             Destroy(gameObject); //destroy the cube and
-            LevelManager.instance.Health -= 5;
+            GameManager.instance.Health -= 5;
             //Destroy(cubeTimer); //destroy cube timer
         }
     }

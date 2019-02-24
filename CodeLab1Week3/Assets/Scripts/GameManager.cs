@@ -5,9 +5,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 	public TextMeshProUGUI timerText;
+	public TextMeshProUGUI scoreText;
 
 	public float timeLeft = 30;
 	public float initCubeSpawnDelay = 3;
@@ -33,12 +34,26 @@ public class LevelManager : MonoBehaviour
 			}
 		}
 	}
+
+	int score = 0;
+
+	public int Score
+	{
+		get
+		{
+			return score;
+		}
+		set
+		{
+			score = value;
+		}
+	}
 	
-	public static LevelManager instance;
+	public static GameManager instance;
 	
 	// Use this for initialization
 	void Start()
-	{
+	{	
 		if (instance == null) //if there is no other instance of LevelManager already in the scene
 		{
 			DontDestroyOnLoad(gameObject); //don't destroy this LevelManager
@@ -57,13 +72,14 @@ public class LevelManager : MonoBehaviour
 	void Update()
 	{
 		LevelTimer();
+		ScoreDisplay();
 		CheckForPrize();
 	}
 
 	void HeartSpawn() //function for spawning our heart prize
 	{
 		GameObject newPrize = Instantiate(Resources.Load<GameObject>("Prefabs/Prize")); //loads prefab into game
-		newPrize.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4)); //at new, random location
+		newPrize.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(-4, 4), 0.78f); //at new, random location
 	}
 
 	void CubeSpawn() //function for spawning our cube prizes
@@ -88,5 +104,10 @@ public class LevelManager : MonoBehaviour
 		timeLeft -= Time.deltaTime; //Countdown one second, every second
 		wholeTime = (int) timeLeft; //Convert float to int, round time in seconds up to whole number
 		timerText.text = "" + wholeTime; //display Time
+	}
+
+	void ScoreDisplay()
+	{
+		scoreText.text = "Score: " + Score;
 	}
 }

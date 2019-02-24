@@ -8,14 +8,9 @@ public class PrizeScript : MonoBehaviour
 
 	private bool playerIsTouchingPrize;
 
-	public GameObject ScoreText;
-
-	public ScoreManager ScoreManager;
-	
 	// Use this for initialization
 	void Start () {
-		ScoreText = GameObject.FindWithTag("ScoreText"); //initialize ScoreText as our TextMeshProUGUI object
-		ScoreManager = ScoreText.GetComponent<ScoreManager>(); //get script from ScoreText
+
 	}
 	
 	// Update is called once per frame
@@ -28,9 +23,9 @@ private void OnTriggerEnter(Collider other)
 	//Debug.Log("I've been hit by something!");
 		if (other.CompareTag("Player") && playerIsTouchingPrize) //if a player is currently touching this prize and another player also touches this prize
 		{
-			//Debug.Log("Two players collided with me!");
+			Debug.Log("Two players collided with me!");
 			Destroy(gameObject); //then destroy this prize
-			ScoreManager.score++; //and get the ScoreManager and add 1 to its score
+			GameManager.instance.Score++;
 		}
 		
 		else if (other.CompareTag("Player")) //if just one player is touching this prize

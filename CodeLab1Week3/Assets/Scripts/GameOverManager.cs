@@ -9,7 +9,7 @@ public class GameOverManager : MonoBehaviour
 
 	private GameObject GameManager;
 	
-	private LevelManager LevelManager;
+	private GameManager _gameManager;
 
 	private Animator anim;
 
@@ -22,12 +22,12 @@ public class GameOverManager : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 		GameManager = GameObject.FindWithTag("GameController"); //Get reference to GameManager object
-		LevelManager = GameManager.GetComponent<LevelManager>(); //Get reference to GameManager's script
+		_gameManager = GameManager.GetComponent<GameManager>(); //Get reference to GameManager's script
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (LevelManager.timeLeft <= 0) //if the timer runs out
+		if (_gameManager.timeLeft <= 0) //if the timer runs out
 		{
 			GameOver(); //game over
 		}
