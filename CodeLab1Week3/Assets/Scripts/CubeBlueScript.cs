@@ -4,26 +4,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CubeScript : MonoBehaviour
+public class CubeBlueScript : MonoBehaviour
 {
     public GameObject player;
-    public GameObject cubeTimer;
-        
-    public TextMeshProUGUI cubeTimerText;
 
-    public float xOffset = 81f;
-    public float yOffset = 10f;
     public float timeLeft = 10f;
-    private int wholeTime;
-
-    public Camera mainCam;
-    public RectTransform cubeTimerRect;
-    public Canvas canvas;
+    
+#region Cube Time UI Variables
+    //public GameObject cubeTimer;
+    //public TextMeshProUGUI cubeTimerText;
+    //public float xOffset = 81f;
+    //public float yOffset = 10f;
+    //private int wholeTime;
+    //public Camera mainCam;
+    //public RectTransform cubeTimerRect;
+    //public Canvas canvas;
+#endregion
    
     // Start is called before the first frame update
     void Start()
     {
-        ConvertUIPos();
+        player = GameObject.Find("PlayerBlue");
+        //ConvertUIPos();
     }
 
     // Update is called once per frame
@@ -33,17 +35,17 @@ public class CubeScript : MonoBehaviour
         CubeFail();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) //if hit by another collider
-    {
-        //Debug.Log("hit");
+    private void OnTriggerEnter(Collider other) //if hit by another collider
+    { 
+        Debug.Log("hit");
         if (other.gameObject == player) //and that collider belongs to the correct player
         {
             Destroy(gameObject); //destroy this cube and
-            Destroy(cubeTimer); //destroy this timer
+            //Destroy(cubeTimer); //destroy this timer
         }
     }
 
-    private void ConvertUIPos()
+    /*private void ConvertUIPos()
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>(); //initialize RectTransform variable
 
@@ -52,13 +54,13 @@ public class CubeScript : MonoBehaviour
             (((viewportPos.x*canvasRect.sizeDelta.x)-(canvasRect.sizeDelta.x*0.5f)) + xOffset), //convert world pos to canvas pos plus slight offset
             (((viewportPos.y*canvasRect.sizeDelta.y)-(canvasRect.sizeDelta.y*0.5f)) + yOffset)); //not sure why the offset is necessary, but it is
         cubeTimerRect.anchoredPosition = cubeScreenPos; //position cube timer on canvas according to world pos of cube
-    }
+    }*/
 
     private void CubeCountdown() //countdown timer for cube
     {
         timeLeft -= Time.deltaTime; //countdown in seconds starting from timeLeft
-        wholeTime = (int) timeLeft; //convert to whole number
-        cubeTimerText.text = " " + wholeTime; //display time left in UI text
+        //wholeTime = (int) timeLeft; //convert to whole number
+        //cubeTimerText.text = " " + wholeTime; //display time left in UI text
     }
     
     private void CubeFail()
@@ -66,7 +68,8 @@ public class CubeScript : MonoBehaviour
         if (timeLeft <= 0) //if timeLeft runs out
         {
             Destroy(gameObject); //destroy the cube and
-            Destroy(cubeTimer); //destroy cube timer
+            LevelManager.instance.Health -= 5;
+            //Destroy(cubeTimer); //destroy cube timer
         }
     }
 }

@@ -35,7 +35,7 @@ public class GameOverManager : MonoBehaviour
 
 	public void GameOver()
 	{
-		Destroy(levelTimer);
+		levelTimer.SetActive(false);
 		anim.SetTrigger("GameOver"); //start Game Over animation
 		restartTimer += Time.deltaTime; //count up in seconds
 		if (restartTimer >= restartDelay) //if restart timer is equal to our restart delay

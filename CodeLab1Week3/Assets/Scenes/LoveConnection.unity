@@ -321,8 +321,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -448,14 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1987982727}
-  cubeTimer: {fileID: 612387890}
-  cubeTimerText: {fileID: 612387891}
-  xOffset: 89
-  yOffset: 15
   timeLeft: 10
-  mainCam: {fileID: 534669904}
-  cubeTimerRect: {fileID: 612387893}
-  canvas: {fileID: 1728357233}
 --- !u!61 &449632317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -674,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9475447222746709581c4fa3f8742d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 426176084}
+  timerText: {fileID: 426176084}
   timeLeft: 30
 --- !u!4 &489037824
 Transform:
@@ -1073,14 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1987752509}
-  cubeTimer: {fileID: 1105239140}
-  cubeTimerText: {fileID: 1105239142}
-  xOffset: 89
-  yOffset: 15
   timeLeft: 10
-  mainCam: {fileID: 534669904}
-  cubeTimerRect: {fileID: 1105239141}
-  canvas: {fileID: 1728357233}
 --- !u!61 &703189962
 BoxCollider2D:
   m_ObjectHideFlags: 0

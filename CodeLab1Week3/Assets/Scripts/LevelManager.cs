@@ -7,16 +7,48 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-	public TextMeshProUGUI timer;
+	public TextMeshProUGUI timerText;
 
 	public float timeLeft = 30;
 	private int wholeTime;
 
+	int health = 100;
+
+	public int Health
+	{
+		get { return health; }
+		set
+		{
+			health = value;
+			if (health > 100)
+			{
+				health = 100;
+			}
+
+			if (health < 0)
+			{
+				health = 0;
+			}
+		}
+	}
+	
+	public static LevelManager instance;
+	
 	// Use this for initialization
 	void Start()
 	{
+		if (instance == null) //if there is no other instance of LevelManager already in the scene
+		{
+			DontDestroyOnLoad(gameObject); //don't destroy this LevelManager
+			instance = this; //set the current instance to this LevelManager
+		}
+		else
+		{
+			Destroy(gameObject); //otherwise, if there is an instance already in this scene, destroy this LevelManager
+		}
+		
 		Spawn(); //spawn first prize at the start of our game
-		//InvokeRepeating("CubeSpawn", 5, 3);
+		InvokeRepeating("CubeSpawn", 3, 5);
 	}
 
 	// Update is called once per frame
@@ -24,7 +56,7 @@ public class LevelManager : MonoBehaviour
 	{
 		timeLeft -= Time.deltaTime; //Countdown one second, every second
 		wholeTime = (int) timeLeft; //Convert float to int, round time in seconds up to whole number
-		timer.text = "" + wholeTime; //display Time
+		timerText.text = "" + wholeTime; //display Time
 		CheckForPrize();
 	}
 
@@ -34,13 +66,13 @@ public class LevelManager : MonoBehaviour
 		newPrize.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4)); //at new, random location
 	}
 
-	/*void CubeSpawn()
+	void CubeSpawn()
 	{
-		GameObject newCube1 = Instantiate(Resources.Load<GameObject>("Prefabs/Cube1"));
+		GameObject newCube1 = Instantiate(Resources.Load<GameObject>("Prefabs/CubeBlue"));
 		newCube1.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4));
-		GameObject newCube2 = Instantiate(Resources.Load<GameObject>("Prefabs/Cube2"));
+		GameObject newCube2 = Instantiate(Resources.Load<GameObject>("Prefabs/CubeRed"));
 		newCube2.transform.position = new Vector2(Random.Range(-10, 10), Random.Range(-4, 4));
-	}*/
+	}
 
 	void CheckForPrize() //check if prize has been destroyed
 	{

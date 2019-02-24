@@ -23,8 +23,9 @@ public class PrizeScript : MonoBehaviour
 		
 	}
 
-private void OnTriggerEnter2D(Collider2D other)
-	{
+private void OnTriggerEnter(Collider other)
+{
+	Debug.Log("I've been hit!");
 		if (other.CompareTag("Player") && playerIsTouchingPrize) //if a player is currently touching this prize and another player also touches this prize
 		{
 			Destroy(gameObject); //then destroy this prize
@@ -38,7 +39,7 @@ private void OnTriggerEnter2D(Collider2D other)
 		}
 	}
 	
-private void OnTriggerExit2D(Collider2D other)
+private void OnTriggerExit(Collider other)
 	{
 		if (other.CompareTag("Player")) //if a player stops touching this prize
 		{
