@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	public TextMeshProUGUI scoreText;
-
 	public float initCubeSpawnDelay = 3;
 	public float cubeSpawnRate = 3;
 
@@ -68,7 +66,6 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		ScoreDisplay();
 		CheckForPrize();
 	}
 
@@ -93,10 +90,5 @@ public class GameManager : MonoBehaviour
 		{
 			HeartSpawn(); //then spawn a new prize
 		}
-	}
-
-	void ScoreDisplay()
-	{
-		scoreText.text = "Score: " + Score;
 	}
 }

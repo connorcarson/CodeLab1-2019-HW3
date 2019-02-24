@@ -37,7 +37,7 @@ public class CubeBlueScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //if hit by another collider
     { 
-        Debug.Log("hit");
+        //Debug.Log("hit");
         if (other.gameObject == player) //and that collider belongs to the correct player
         {
             Destroy(gameObject); //destroy this cube and

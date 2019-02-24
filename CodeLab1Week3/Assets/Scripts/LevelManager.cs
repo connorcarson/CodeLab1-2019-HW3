@@ -6,7 +6,8 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    //public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI healthText;
 
     public float timeLeft = 30;
     private int wholeTime;
@@ -21,7 +22,8 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         LevelTimer();
-        //ScoreDisplay();
+        ScoreDisplay();
+        HealthDisplay();
     }
     
     void LevelTimer()
@@ -31,8 +33,13 @@ public class LevelManager : MonoBehaviour
         timerText.text = "" + wholeTime; //display Time
     }
     
-    /*void ScoreDisplay()
+    void ScoreDisplay()
     {
         scoreText.text = "Score: " + GameManager.instance.Score;
-    }*/
+    }
+
+    void HealthDisplay()
+    {
+        healthText.text = "Health: " + GameManager.instance.Health;
+    }
 }

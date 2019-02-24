@@ -23,7 +23,7 @@ private void OnTriggerEnter(Collider other)
 	//Debug.Log("I've been hit by something!");
 		if (other.CompareTag("Player") && playerIsTouchingPrize) //if a player is currently touching this prize and another player also touches this prize
 		{
-			Debug.Log("Two players collided with me!");
+			//Debug.Log("Two players collided with me!");
 			Destroy(gameObject); //then destroy this prize
 			GameManager.instance.Score++;
 		}
